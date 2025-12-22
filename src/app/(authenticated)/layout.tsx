@@ -35,7 +35,7 @@ const PrivateLayout: React.FC<PrivateLayoutProps> = async ({ children }) => {
             alt="light star background decoration"
             width={800}
             height={800}
-            className="object-contain opacity-100 object-top-right w-100 h-100 sm:w-125 sm:h-125 md:w-150 md:h-150 lg:w-175 lg:h-175 xl:w-200 xl:h-200"
+            className="object-contain object-top-right w-100 h-100 sm:w-125 sm:h-125 md:w-150 md:h-150 lg:w-175 lg:h-175 xl:w-200 xl:h-200"
             priority
           />
         </div>

@@ -10,7 +10,9 @@ const PropertyHeader = () => {
         <button
           className="mt-1 md:mt-1.25 p-0.5 cursor-pointer shrink-0"
           aria-label="Go back"
-          onClick={() => {router.back()}}
+          onClick={() => {
+            router.back();
+          }}
         >
           <Image
             src="/back-icon.svg"

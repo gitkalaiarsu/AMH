@@ -39,16 +39,20 @@ export function Header() {
               size="icon"
               className="relative w-8 h-8 text-white cursor-pointer hover:bg-white/10 sm:w-9 sm:h-9 md:w-10 md:h-10"
             >
-              <Image
-                src="/notification-bell.svg"
-                alt="Bell"
-                width={16}
-                height={16}
-                className="w-4 h-4"
-              />
-              <span className="absolute top-0.5 right-0.5 sm:top-1 sm:right-1.5 md:right-2 h-3.5 w-3.5 flex items-center justify-center rounded-full bg-red-500 border-[1.5px] border-[#13161C]">
-                <span className="text-[8px] font-bold text-white">6</span>
-              </span>
+              <div className="relative flex items-center justify-center w-4 h-4">
+                <Image
+                  src="/notification-bell.svg"
+                  alt="Bell"
+                  width={16}
+                  height={16}
+                  className="w-4 h-4"
+                />
+                <span className="absolute -top-px -right-0.75 flex items-center justify-center bg-red-500 rounded-full w-3 h-3 border-[1.5px]">
+                  <span className="text-[7px] font-bold text-white leading-none pb-[0.5px]">
+                    6
+                  </span>
+                </span>
+              </div>
             </Button>
           </div>
 

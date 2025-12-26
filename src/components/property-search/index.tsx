@@ -18,7 +18,7 @@ export default function PropertySearch() {
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = () => {
-      router.push(PRIVATE_PATH.PROPERTY_LIST);
+    router.push(PRIVATE_PATH.PROPERTY_LIST);
   };
 
   const featureCards = [

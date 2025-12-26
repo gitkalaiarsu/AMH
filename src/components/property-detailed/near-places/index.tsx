@@ -6,7 +6,7 @@ export function NearbyPlacesCard() {
   return (
     <div className="w-full rounded-[10px] bg-[#FFFFFF] p-2 sm:p-5 md:p-6">
       <div className="flex items-center justify-between mb-2 sm:mb-2">
-        <h3 className="font-bold text-[#041523] text-base sm:text-lg leading-[13.86px] font-satoshi">
+        <h3 className="font-bold text-[#041523] text-base sm:text-lg leading-none font-satoshi">
           Nearby Places
         </h3>
       </div>
@@ -15,11 +15,17 @@ export function NearbyPlacesCard() {
         {/* SCHOOL SECTION */}
         <div className="flex flex-col pt-3 pb-3 border-b border-[#CECECE]">
           <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-1.5 sm:gap-2">
-              <div className="flex items-center justify-center w-5 h-5 sm:w-4 sm:h-4 shrink-0">
-                <Image src="/school.svg" alt="School" width={20} height={20} />
+            <div className="flex items-center gap-2">
+              <div className="flex items-center justify-center w-5 h-5 shrink-0">
+                <Image
+                  src="/school.svg"
+                  alt="School"
+                  width={20}
+                  height={20}
+                  className="object-contain"
+                />
               </div>
-              <span className="text-xs font-bold text-[#F68708] leading-[13.86px] font-satoshi whitespace-nowrap">
+              <span className="text-base font-bold text-[#F68708] font-satoshi whitespace-nowrap leading-none">
                 School
               </span>
             </div>
@@ -34,9 +40,9 @@ export function NearbyPlacesCard() {
                   <Image
                     src="/person.svg"
                     alt="Walk"
-                    width={14}
-                    height={14}
-                    className="w-3.5 h-3.5"
+                    width={23}
+                    height={23}
+                    className="w-5 h-5"
                   />
                 </button>
               </div>
@@ -48,9 +54,9 @@ export function NearbyPlacesCard() {
                   <Image
                     src="/car.svg"
                     alt="Car"
-                    width={16}
-                    height={16}
-                    className="w-4 h-4"
+                    width={23}
+                    height={23}
+                    className="w-5 h-5"
                   />
                 </button>
               </div>
@@ -78,11 +84,17 @@ export function NearbyPlacesCard() {
 
         {/* RETAIL SECTION */}
         <div className="flex flex-col pt-3 pb-3 border-b border-[#CECECE]">
-          <div className="flex items-center mb-2 gap-1.5 sm:gap-2">
-            <div className="flex items-center justify-center w-5 h-5 sm:w-4 sm:h-4 shrink-0">
-              <Image src="/retail.png" alt="Retail" width={20} height={16} />
+          <div className="flex items-center gap-2 mb-2">
+            <div className="flex items-center justify-center w-5 h-5 shrink-0">
+              <Image
+                src="/retail.svg"
+                alt="Retail"
+                width={20}
+                height={16}
+                className="object-contain"
+              />
             </div>
-            <span className="text-xs font-bold text-[#17AD8F] leading-[13.86px] font-satoshi">
+            <span className="text-base font-bold text-[#17AD8F] font-satoshi leading-none">
               Retail
             </span>
           </div>
@@ -103,11 +115,17 @@ export function NearbyPlacesCard() {
 
         {/* PARKING LOT SECTION */}
         <div className="flex flex-col pt-3 pb-3 border-b border-[#CECECE]">
-          <div className="flex items-center mb-2 gap-1.5 sm:gap-2">
-            <div className="flex items-center justify-center w-5 h-5 sm:w-4 sm:h-4 shrink-0">
-              <Image src="/parking.svg" alt="Parking" width={18} height={18} />
+          <div className="flex items-center gap-2 mb-2">
+            <div className="flex items-center justify-center w-5 h-5 shrink-0">
+              <Image
+                src="/parking.svg"
+                alt="Parking"
+                width={18}
+                height={18}
+                className="object-contain"
+              />
             </div>
-            <span className="text-xs font-bold text-[#1867D2] leading-[13.86px] font-satoshi">
+            <span className="text-base font-bold text-[#1867D2] font-satoshi leading-none">
               Parking Lot
             </span>
           </div>
@@ -123,11 +141,17 @@ export function NearbyPlacesCard() {
 
         {/* GYM SECTION */}
         <div className="flex flex-col pt-3 pb-3">
-          <div className="flex items-center mb-2 gap-1.5 sm:gap-2">
-            <div className="flex items-center justify-center w-5 h-5 sm:w-4 sm:h-4 shrink-0">
-              <Image src="/gym.svg" alt="Gym" width={21} height={16} />
+          <div className="flex items-center gap-2 mb-2">
+            <div className="flex items-center justify-center w-5 h-5 shrink-0">
+              <Image
+                src="/gym.svg"
+                alt="Gym"
+                width={21}
+                height={16}
+                className="object-contain"
+              />
             </div>
-            <span className="text-xs font-bold text-[#B445FF] leading-[13.86px] font-satoshi">
+            <span className="text-base font-bold text-[#B445FF] font-satoshi leading-none">
               Gym
             </span>
           </div>
@@ -148,16 +172,16 @@ function PlaceRow({
 }: Readonly<{ name: string; time: string; distance: string }>) {
   return (
     <div className="flex items-start justify-between w-full gap-2">
-      <span className="font-medium text-[13px] text-[#68737A] leading-[13.86px] tracking-[-0.02em] flex-1 min-w-0">
+      <span className="font-medium text-[13px] text-[#68737A] leading-none tracking-[-0.02em] flex-1 min-w-0">
         {name}
       </span>
 
       <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-        <span className="font-medium text-[13px] text-[#68737A] leading-[13.86px] tracking-[-0.02em] text-center w-[45px] sm:w-[60px]">
+        <span className="font-medium text-[13px] text-[#68737A] leading-none tracking-[-0.02em] text-center w-11.25 sm:w-15">
           {time}
         </span>
 
-        <span className="font-medium text-[13px] text-[#68737A] leading-[13.86px] tracking-[-0.02em] text-center w-[45px] sm:w-[50px]">
+        <span className="font-medium text-[13px] text-[#68737A] leading-none tracking-[-0.02em] text-center w-[45px] sm:w-[50px]">
           {distance}
         </span>
       </div>

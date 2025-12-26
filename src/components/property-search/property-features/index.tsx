@@ -44,12 +44,12 @@ const PropertyFeatures = ({
           </div>
 
           {/* Title */}
-          <h3 className="font-satoshi text-xs leading-[19.14px] tracking-normal text-white">
+          <h3 className="font-satoshi text-xs leading-[17.14px] tracking-[-0.02em] text-white">
             {card.title}
           </h3>
 
           {/* Description */}
-          <p className="font-satoshi text-[11px] leading-[19.14px] tracking-normal text-white opacity-80">
+          <p className="font-satoshi text-[11px] leading-[17.14px] tracking-[-0.02em] text-white opacity-80">
             {card.description}
           </p>
         </div>

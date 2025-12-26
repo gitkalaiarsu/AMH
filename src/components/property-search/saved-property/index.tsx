@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { mockSavedProperties } from "@/utils/mock-data";
@@ -25,8 +24,7 @@ const SavedProperty = () => {
           View All
         </Button>
       </div>
-
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {mockSavedProperties.map((saved) => (
           <PropertyCard key={saved.id} property={saved.property} />
         ))}

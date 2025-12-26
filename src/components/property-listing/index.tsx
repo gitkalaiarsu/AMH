@@ -1,5 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
-
 import { useState, useMemo, useEffect, useRef, useCallback } from "react";
 import { Loader2 } from "lucide-react";
 import { PropertyCard } from "@/components/ui/property-card";
@@ -7,11 +7,13 @@ import { mockProperties } from "@/utils/mock-data";
 import PropertyHeader from "./property-header";
 import PropertyFilters from "./property-filters";
 import MatchingProperty from "./matching-property";
-import { useAppSelector } from "@/store/hooks";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { RootState } from "@/store/store";
+import * as layoutActions from "@/store/reducers/layoutReducer";
 
 const PropertyListing = () => {
   const { isSidebarOpen } = useAppSelector((state: RootState) => state.layout);
+  const dispatch = useAppDispatch();
 
   const [filters, setFilters] = useState({
     location: "Lake Dallas, TX",
@@ -22,6 +24,10 @@ const PropertyListing = () => {
   const [displayCount, setDisplayCount] = useState(8);
   const [isLoading, setIsLoading] = useState(false);
   const loaderRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    dispatch(layoutActions.setSidebar(false));
+  }, []);
 
   const extendedProperties = useMemo(() => {
     const extended = [];
@@ -112,20 +118,26 @@ const PropertyListing = () => {
         {/* Property Grid */}
         <div
           className={`
-                        grid gap-5 pb-8 transition-all duration-300 ease-in-out
-                        grid-cols-1 min-[500px]:grid-cols-2 md:grid-cols-3
-                        ${
-                          isSidebarOpen
-                            ? "lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5"
-                            : "lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6"
-                        }
-                    `}
+              grid pb-8 transition-all duration-300 ease-in-out
+              gap-4 md:gap-5
+              
+              /* Perfect balance for all screens */
+              grid-cols-1
+              sm:grid-cols-2
+              md:grid-cols-3
+              lg:grid-cols-4
+              
+              ${
+                isSidebarOpen
+                  ? "xl:grid-cols-4 2xl:grid-cols-4"
+                  : "xl:grid-cols-5 2xl:grid-cols-6"
+              }
+            `}
         >
           {displayedProperties.map((property) => (
             <PropertyCard key={property.id} property={property} />
           ))}
         </div>
-
         {/* Infinite Scroll Loader */}
         {hasMore && (
           <div

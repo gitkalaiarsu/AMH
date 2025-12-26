@@ -20,14 +20,14 @@ const PropertyDetailedHeader = ({
 }: PropertyHeaderProps) => {
   return (
     <div className="flex items-center justify-between w-full gap-4 py-4">
-      <div className="flex items-center flex-1 min-w-0 gap-3">
+      <div className="flex items-start flex-1 min-w-0 gap-2 md:gap-3">
         <button
           onClick={onBack}
-          className="p-0.5 cursor-pointer"
+          className="mt-1 md:mt-1.25 p-0.5 cursor-pointer shrink-0"
           aria-label="Go back"
         >
           <Image
-            src="/back-icon.png"
+            src="/back-icon.svg"
             alt="back"
             width={14}
             height={14}
@@ -35,7 +35,7 @@ const PropertyDetailedHeader = ({
           />
         </button>
 
-        <div className="flex flex-col min-w-0">
+        <div className="flex flex-col flex-1 min-w-0">
           <h1 className="text-lg leading-tight truncate sm:text-xl lg:text-2xl text-foreground font-satoshi">
             Property ID {propertyId}
           </h1>
@@ -44,24 +44,16 @@ const PropertyDetailedHeader = ({
           </p>
         </div>
       </div>
-
-      <Button
-        size="icon"
-        className="bg-[#2F6FED] hover:bg-[#265BC7] text-white shrink-0 sm:hidden h-8 w-8 rounded-lg shadow-sm cursor-pointer flex items-center justify-center"
-      >
-        <Image src="/export-icon.png" alt="export" width={16} height={16} />
-        <span className="sr-only">Export</span>
-      </Button>
-
-      <Button className="bg-[#2F6FED] hover:bg-[#265BC7] text-white shrink-0 hidden sm:flex items-center gap-2 rounded-lg px-4 py-3 h-10 shadow-sm transition-colors cursor-pointer">
+      <Button className="bg-[#2F6FED] hover:bg-[#265BC7] text-white shrink-0 flex items-center gap-2 rounded-lg px-4 py-3 h-10 shadow-sm transition-colors cursor-pointer">
+        {" "}
         <Image
-          src="/export-icon.png"
+          src="/export-icon.svg"
           alt="export"
           width={12}
           height={12}
           className="mb-0.5"
         />
-        <span className="font-['Satoshi'] text-[16px] leading-4 tracking-[0.02em] capitalize text-center align-middle font-normal">
+        <span className="font-satoshi text-[16px] leading-4 tracking-[0.02em] capitalize text-center align-middle font-normal">
           Export
         </span>
       </Button>

@@ -1,7 +1,6 @@
 "use client";
 
 import Image, { type StaticImageData } from "next/image";
-import { COLORS } from "@/utils/design-tokens";
 
 interface SectionHeaderProps {
   icon: string | StaticImageData;
@@ -21,10 +20,7 @@ export function SectionHeader({ icon, title }: Readonly<SectionHeaderProps>) {
         </h3>
       </div>
 
-      <div
-        className="absolute bottom-0 left-0 w-full lg:w-[254px] h-[3px]"
-        style={{ backgroundColor: COLORS.accent }}
-      />
+      <div className="absolute bottom-0 left-0 w-full lg:w-63.5 h-0.75 bg-[#1867d2]" />
     </div>
   );
 }

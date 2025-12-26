@@ -14,7 +14,7 @@ const PrivateLayout: React.FC<PrivateLayoutProps> = async ({ children }) => {
     <Suspense fallback={<Loading />}>
       <div className="relative flex flex-col h-screen overflow-hidden bg-background">
         <div
-          className="absolute top-0 right-0 z-0 pointer-events-none select-none"
+          className="fixed top-0 right-0 z-0 pointer-events-none select-none"
           aria-hidden="true"
         >
           <Image
@@ -27,7 +27,7 @@ const PrivateLayout: React.FC<PrivateLayoutProps> = async ({ children }) => {
           />
         </div>
         <div
-          className="absolute top-0 right-0 z-0 pointer-events-none select-none"
+          className="fixed right-0 z-0 pointer-events-none select-none top-13.25"
           aria-hidden="true"
         >
           <Image
@@ -39,11 +39,13 @@ const PrivateLayout: React.FC<PrivateLayoutProps> = async ({ children }) => {
             priority
           />
         </div>
+
         <Header />
+
         <div className="relative z-10 flex flex-1 overflow-hidden">
           <SearchHistorySidebar />
 
-          <main className="flex-1 overflow-x-hidden overflow-y-auto transition-all duration-300 ease-in-out scroll-smooth">
+          <main className="flex-1 overflow-x-hidden overflow-y-auto scroll-smooth">
             {children}
           </main>
         </div>

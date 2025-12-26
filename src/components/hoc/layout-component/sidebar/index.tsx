@@ -37,7 +37,7 @@ export function SearchHistorySidebar() {
       <aside
         className={cn(
           "shrink-0 overflow-hidden transition-all duration-300 ease-in-out",
-          "bg-sidebar-surface",
+          "bg-[#13161C]",
           "hidden md:block md:relative",
           isSidebarOpen ? "md:w-sidebar-open" : "md:w-sidebar-closed",
           isSidebarOpen &&

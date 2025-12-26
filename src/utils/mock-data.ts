@@ -41,7 +41,7 @@ export const mockProperties: Property[] = [
     lotSize: 5500,
     propertyType: "single-family",
     description:
-      "This two-story household at 1224 Riverside Road features a kitchen equipped with mixed appliances and quartz countertops. Residents will appreciate the tile flooring throughout the main living areas. Architectural highlights include arched windows and a vaulted ceiling, adding visual interest to the space. The primary bathroom offers a dual-vanity setup for added convenience. Outdoor amenities include a two-car garage and a double-width driveway.",
+      "This two-story household at 1224 Riverside Road features a kitchen equipped with mixed appliances and quartz countertops. Residents will appreciate the tile flooring throughout the main living areas. Architectural highlights include arched windows and a vaulted ceiling, adding visual interest to the space. The primary bathroom offers a dual-vanity setup for added convenience. Outdoor amenities include a two-car garage and a double-width driveway. This two-story household at 1224 Riverside Road features a kitchen equipped with mixed appliances and quartz countertops. Residents will appreciate the tile flooring throughout the main living areas. Architectural highlights include arched windows and a vaulted ceiling, adding visual interest to the space. The primary bathroom offers a dual-vanity setup for added convenience. Outdoor amenities include a two-car garage and a double-width driveway.",
     features: {
       garageAndParking: ["2 Car Garage", "2 Car Garage"],
       yardAndExterior: ["Front Yard Grass", "Front Yard Grass"],

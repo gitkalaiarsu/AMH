@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import { useAppSelector } from "@/store/hooks";
 import { RootState } from "@/store/store";
@@ -8,7 +7,7 @@ interface PropertyFeaturesProps {
     iconSrc: string;
     title: string;
     description: string;
-    iconBgColor?: string; // Add this for dynamic bg color
+    iconBgColor?: string;
   }[];
 }
 

@@ -13,9 +13,8 @@ export function Header() {
   };
 
   return (
-    <header className="shrink-0 z-50 w-full bg-[#13161C]">
+    <header className="relative shrink-0 z-50 w-full bg-[#272630]">
       <div className="relative flex h-13.25 items-center justify-between px-2 sm:px-4 md:px-6">
-        {/* Left Section - Logo */}
         <button className="z-10 flex items-center cursor-pointer shrink-0">
           <Image
             src="/property-pulse-logo.svg"
@@ -27,16 +26,13 @@ export function Header() {
           />
         </button>
 
-        {/* Center Section - Title (Absolutely centered on lg+) */}
         <div className="absolute items-center justify-center hidden -translate-x-1/2 lg:flex left-1/2">
-          <p className="text-sm text-white uppercase font-satoshi whitespace-nowrap">
+          <p className="text-xs font-bold leading-5.5 tracking-[0.5px]  text-[#BEBEC9] uppercase font-satoshi">
             AI Amenities locator
           </p>
         </div>
 
-        {/* Right Section */}
         <div className="z-10 flex items-center h-full shrink-0">
-          {/* Notification Bell */}
           <div className="flex items-center px-2 md:px-3">
             <Button
               variant="ghost"
@@ -56,10 +52,8 @@ export function Header() {
             </Button>
           </div>
 
-          {/* Divider */}
           <div className="w-px h-4 bg-white/20" />
 
-          {/* Theme Toggle */}
           <div className="flex items-center px-2 md:px-3">
             <Button
               variant="ghost"
@@ -76,10 +70,8 @@ export function Header() {
             </Button>
           </div>
 
-          {/* Divider */}
           <div className="w-px h-4 bg-white/20" />
 
-          {/* User Profile */}
           <div className="flex items-center gap-2 px-2 md:px-4">
             <div className="relative w-7 h-7 sm:w-8 sm:h-8 md:h-9 md:w-9 shrink-0">
               <Image
@@ -99,10 +91,8 @@ export function Header() {
             </div>
           </div>
 
-          {/* Divider */}
           <div className="w-px h-4 bg-white/20" />
 
-          {/* Menu Button */}
           <div className="flex items-center px-2 md:px-3">
             <Button
               variant="ghost"

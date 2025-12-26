@@ -13,7 +13,7 @@ export function PropertyFeaturesTab({
   features,
 }: Readonly<PropertyFeaturesTabProps>) {
   return (
-    <div className="rounded-[10px] bg-[#23262F] lg:col-span-3 text-base lg:text-[18px] text-white font-satoshi h-auto lg:h-[510px] overflow-hidden">
+    <div className="rounded-[10px] bg-[#23262F] lg:col-span-3 text-base lg:text-[18px] text-white font-satoshi h-auto lg:h-127.5 overflow-hidden">
       <Tabs defaultValue="futures" className="flex flex-col w-full h-full">
         {/* Tab Headers Container */}
         <div className="w-full shrink-0 bg-[#1D2028] rounded-[10px] p-2 sm:p-3 border-b border-white/5">

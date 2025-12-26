@@ -1,31 +1,33 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useAppSelector } from "@/store/hooks";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import WelcomeInformation from "./welcome-info";
 import SearchProperties from "./search-properties";
 import PropertyFeatures from "./property-features";
 import SavedProperty from "./saved-property";
+import * as layoutActions from "@/store/reducers/layoutReducer";
+import { PRIVATE_PATH } from "@/utils/constant";
 
 export default function PropertySearch() {
   const router = useRouter();
+  const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.auth.user);
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = () => {
-    if (searchQuery.trim()) {
-      router.push("/property-listing?q=" + encodeURIComponent(searchQuery));
-    }
+      router.push(PRIVATE_PATH.PROPERTY_LIST);
   };
 
   const featureCards = [
     {
-      iconSrc: "/house.svg", // or "/homecard.png"
+      iconSrc: "/house.svg",
       title: "Property ID / Address Example",
       description:
         "Search by property ID, full address, or zip code to view detailed listings instantly.",
-      iconBgColor: "rgba(74, 217, 145, 0.21)", // #4AD991 with 21% opacity
+      iconBgColor: "rgba(74, 217, 145, 0.21)",
     },
     {
       iconSrc: "/ep_location.svg",
@@ -43,6 +45,10 @@ export default function PropertySearch() {
     },
   ];
 
+  useEffect(() => {
+    dispatch(layoutActions.setSidebar(true));
+  }, []);
+
   return (
     <div className="flex-1 overflow-y-auto">
       <div
@@ -50,8 +56,8 @@ export default function PropertySearch() {
           container mx-auto px-4 py-6 
           sm:px-5 sm:py-8
           md:px-6 md:py-10
-          lg:px-8 lg:py-12
-          xl:max-w-[954px]
+          lg:px-8 lg:py-25
+          xl:max-w-238.5
           relative
         "
       >
@@ -67,9 +73,9 @@ export default function PropertySearch() {
             lg:mb-16 
             xl:mb-16.75
             max-w-full 
-            sm:max-w-[540px]
-            md:max-w-[680px]
-            lg:max-w-[720px]
+            sm:max-w-135
+            md:max-w-170
+            lg:max-w-180
           "
         >
           {/* Greeting Text */}

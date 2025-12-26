@@ -16,7 +16,7 @@ export const SearchAction = () => {
 
           <input
             type="text"
-            placeholder="Search history"
+            placeholder="New Search"
             className="flex-1 w-full text-sm text-white bg-transparent border-none outline-none placeholder:text-white font-satoshi"
           />
         </div>

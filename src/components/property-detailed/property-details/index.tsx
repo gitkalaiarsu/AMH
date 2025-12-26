@@ -3,6 +3,7 @@
 import { useAppSelector } from "@/store/hooks";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { useState, useRef, useLayoutEffect } from "react";
 
 interface PropertyDetailsCardProps {
   readonly address: string;
@@ -16,7 +17,6 @@ interface PropertyDetailsCardProps {
   readonly price: number;
 }
 
-// Extract size variants to reduce cognitive complexity
 const getSizeClasses = (isSidebarOpen: boolean) => ({
   container: isSidebarOpen ? "p-4 lg:p-3 xl:p-4" : "p-[25px]",
   title: isSidebarOpen
@@ -32,8 +32,8 @@ const getSizeClasses = (isSidebarOpen: boolean) => ({
     : "text-[15px]",
   summaryTitle: isSidebarOpen ? "text-[14px] lg:text-[13px]" : "text-[16px]",
   descriptionText: isSidebarOpen
-    ? "text-[11px] lg:text-[10px] xl:text-[12px] leading-[18px] line-clamp-5"
-    : "text-[13px] leading-[21px] line-clamp-6",
+    ? "text-[11px] lg:text-[10px] xl:text-[12px] leading-[18px]"
+    : "text-[13px] leading-[21px]",
   priceCard: isSidebarOpen ? "p-2.5 lg:p-2 xl:p-3" : "p-5",
   priceLabel: isSidebarOpen ? "text-[10px]" : "text-[11.17px]",
   priceAmount: isSidebarOpen
@@ -89,6 +89,24 @@ export function PropertyDetailsCard({
   const { isSidebarOpen } = useAppSelector((state) => state?.layout);
   const sizes = getSizeClasses(isSidebarOpen);
 
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isOverflowing, setIsOverflowing] = useState(false);
+  const textRef = useRef<HTMLParagraphElement>(null);
+
+  useLayoutEffect(() => {
+    const checkOverflow = () => {
+      const element = textRef.current;
+      if (element) {
+        const isLong = element.scrollHeight > element.clientHeight;
+        setIsOverflowing(isLong);
+      }
+    };
+
+    checkOverflow();
+    window.addEventListener("resize", checkOverflow);
+    return () => window.removeEventListener("resize", checkOverflow);
+  }, [description, isSidebarOpen]);
+
   return (
     <div
       className={cn(
@@ -103,11 +121,10 @@ export function PropertyDetailsCard({
           sizes.container,
         )}
       >
-        {/* Header Section */}
         <div className={sizes.headerMargin}>
           <h2
             className={cn(
-              "text-white font-bold font-sans transition-all leading-tight",
+              "text-white font-bold transition-all leading-tight font-satoshi",
               sizes.title,
             )}
           >
@@ -116,7 +133,6 @@ export function PropertyDetailsCard({
             {city}, {state} {zipCode}
           </h2>
 
-          {/* Specs Row */}
           <div
             className={cn(
               "flex items-center mt-3 transition-all duration-300",
@@ -153,22 +169,48 @@ export function PropertyDetailsCard({
           </div>
         </div>
 
-        {/* Description Section */}
-        <div className="flex-1 min-h-0 mb-3 overflow-hidden">
-          <h3 className={cn("font-bold text-white mb-2", sizes.summaryTitle)}>
-            Property summary
-          </h3>
-          <p
+        <div className="flex flex-col flex-1 min-h-0 mb-3">
+          <h3
             className={cn(
-              "text-white font-normal tracking-[-0.03em] overflow-hidden",
-              sizes.descriptionText,
+              "font-bold text-white mb-2 shrink-0",
+              sizes.summaryTitle,
             )}
           >
-            {description}
-          </p>
+            Property summary
+          </h3>
+
+          <div className="relative flex-1 min-h-0">
+            <p
+              ref={textRef}
+              className={cn(
+                "text-white font-normal tracking-[-0.03em] transition-all duration-300",
+                sizes.descriptionText,
+                isExpanded
+                  ? "overflow-y-auto h-full pr-1"
+                  : "line-clamp-4 lg:line-clamp-none lg:overflow-hidden lg:h-full",
+              )}
+            >
+              {description}
+            </p>
+
+            {!isExpanded && isOverflowing && (
+              <div className="absolute bottom-0 left-0 w-full h-8 bg-gradient-to-t from-[#2f303a] via-[#2f303a]/80 to-transparent pointer-events-none" />
+            )}
+          </div>
+
+          {(isOverflowing || isExpanded) && (
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className={cn(
+                "text-[#5EA9FF] hover:text-[#4A9AEE] hover:underline font-medium mt-1 text-left w-fit shrink-0 transition-colors cursor-pointer",
+                isSidebarOpen ? "text-[10px]" : "text-[11px]",
+              )}
+            >
+              {isExpanded ? "Show less" : "Show more"}
+            </button>
+          )}
         </div>
 
-        {/* Price Card Section */}
         <div
           className={cn(
             "bg-[#171B21] rounded-[10px] mt-auto shrink-0",

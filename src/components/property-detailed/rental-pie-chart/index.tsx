@@ -8,7 +8,6 @@ import {
   Legend,
   ChartOptions,
   Plugin,
-  TooltipItem,
 } from "chart.js";
 import { useMemo } from "react";
 
@@ -30,7 +29,7 @@ export function PieChart({
   data,
   showPercentages = true,
   className = "",
-}: PieChartProps) {
+}: Readonly<PieChartProps>) {
   const percentageLabelsPlugin: Plugin<"doughnut"> = useMemo(
     () => ({
       id: "percentageLabels",
@@ -95,7 +94,7 @@ export function PieChart({
           backgroundColor: data.map((item) => item.color),
           borderColor: data.map(() => "transparent"),
           borderWidth: 0,
-          hoverOffset: 4,
+          hoverOffset: 0,
           hoverBackgroundColor: data.map((item) => item.color),
         },
       ],
@@ -112,26 +111,7 @@ export function PieChart({
           display: false,
         },
         tooltip: {
-          enabled: true,
-          backgroundColor: "rgba(0, 0, 0, 0.85)",
-          padding: 12,
-          titleColor: "#fff",
-          titleFont: {
-            size: 14,
-            weight: "bold" as const,
-          },
-          bodyColor: "#fff",
-          bodyFont: {
-            size: 13,
-          },
-          borderColor: "rgba(255, 255, 255, 0.2)",
-          borderWidth: 1,
-          displayColors: true,
-          callbacks: {
-            label: function (context: TooltipItem<"doughnut">) {
-              return ` ${context.label}: ${context.parsed}%`;
-            },
-          },
+          enabled: false,
         },
       },
       cutout: "0%",

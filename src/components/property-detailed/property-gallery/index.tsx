@@ -25,6 +25,7 @@ export function PropertyImageGallery({
   const [canScrollRight, setCanScrollRight] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
+  // Check scroll position and update button visibility
   const checkScrollPosition = () => {
     if (scrollContainerRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } =
@@ -34,6 +35,7 @@ export function PropertyImageGallery({
     }
   };
 
+  // Initialize scroll check on mount and when images change
   useEffect(() => {
     checkScrollPosition();
     const container = scrollContainerRef.current;
@@ -76,11 +78,13 @@ export function PropertyImageGallery({
       <div
         className={cn(
           "relative w-full overflow-hidden rounded-[10px] border border-border/50 shadow-sm group",
-          "aspect-800/398",
-          // Height kept at original values
+          "aspect-521/398",
+          // Responsive height adjustments
           "h-62.5 sm:h-75 md:h-87.5 lg:h-99.5",
-          // Max width constraints INCREASED
-          isSidebarOpen ? "max-w-full xl:max-w-175" : "max-w-full lg:max-w-200",
+          // Max width constraints based on sidebar
+          isSidebarOpen
+            ? "max-w-full xl:max-w-120"
+            : "max-w-full lg:max-w-140.5",
         )}
       >
         <Image
@@ -91,6 +95,7 @@ export function PropertyImageGallery({
           priority
         />
 
+        {/* Previous button */}
         <button
           onClick={(e) => {
             e.stopPropagation();
@@ -106,6 +111,7 @@ export function PropertyImageGallery({
           <ChevronLeft className="w-4 h-4" />
         </button>
 
+        {/* Next button */}
         <button
           onClick={(e) => {
             e.stopPropagation();
@@ -127,8 +133,9 @@ export function PropertyImageGallery({
         className={cn(
           "relative group/thumbs w-full",
           "h-15 sm:h-17.5 md:h-20 lg:h-21.25",
-          // Updated width constraints to match main image
-          isSidebarOpen ? "max-w-full xl:max-w-175" : "max-w-full lg:max-w-200",
+          isSidebarOpen
+            ? "max-w-full xl:max-w-120"
+            : "max-w-full lg:max-w-140.5",
         )}
       >
         {/* Left scroll button */}
@@ -166,10 +173,11 @@ export function PropertyImageGallery({
               onClick={() => setSelectedImage(index)}
               className={cn(
                 "relative shrink-0 overflow-hidden rounded-[10px] transition-all duration-300",
-                "w-30 h-13.75 sm:w-35 sm:h-16.25 md:w-40 md:h-18 lg:w-50 lg:h-20",
+                // Responsive thumbnail sizes
+                "w-22.5 h-13.75 sm:w-25 sm:h-16.25 md:w-27.5 md:h-18 lg:w-30.5 lg:h-20",
                 selectedImage === index
-                  ? "border border-white ring-2 ring-primary/20"
-                  : "border-transparent",
+                  ? "border border-white opacity-100 ring-2 ring-primary/20"
+                  : "border-transparent opacity-60 hover:opacity-100",
               )}
             >
               <Image
@@ -178,6 +186,9 @@ export function PropertyImageGallery({
                 fill
                 className="object-cover"
               />
+              {selectedImage !== index && (
+                <div className="absolute inset-0 transition-colors bg-black/20 hover:bg-transparent" />
+              )}
             </button>
           ))}
         </div>

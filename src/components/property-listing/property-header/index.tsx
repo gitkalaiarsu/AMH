@@ -1,13 +1,16 @@
 "use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const PropertyHeader = () => {
+  const router = useRouter();
   return (
     <div className="w-full max-w-full mb-4 overflow-hidden md:mb-6">
       <div className="flex items-start gap-2 md:gap-3">
         <button
           className="mt-1 md:mt-1.25 p-0.5 cursor-pointer shrink-0"
           aria-label="Go back"
+          onClick={() => {router.back()}}
         >
           <Image
             src="/back-icon.svg"

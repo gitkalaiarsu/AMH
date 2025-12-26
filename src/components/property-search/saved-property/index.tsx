@@ -6,7 +6,7 @@ import { PropertyCard } from "@/components/ui/property-card";
 
 const SavedProperty = () => {
   return (
-    <div className="mb-8">
+    <div className="mb-8 w-full max-w-238.5 mx-auto">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
           <Image
@@ -21,14 +21,12 @@ const SavedProperty = () => {
         <Button
           variant="link"
           className="h-auto p-0 underline text-primary hover:text-primary/80 font-satoshi"
-          // onClick={() => router.push("/saved")}
         >
           View All
         </Button>
       </div>
 
-      {/* Property Cards Grid - Mobile Responsive */}
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-6 justify-items-center">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {mockSavedProperties.map((saved) => (
           <PropertyCard key={saved.id} property={saved.property} />
         ))}

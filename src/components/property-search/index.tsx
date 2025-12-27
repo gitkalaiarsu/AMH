@@ -10,11 +10,12 @@ import PropertyFeatures from "./property-features";
 import SavedProperty from "./saved-property";
 import * as layoutActions from "@/store/reducers/layoutReducer";
 import { PRIVATE_PATH } from "@/utils/constant";
+import { RootState } from "@/store/store";
 
 export default function PropertySearch() {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const user = useAppSelector((state) => state.auth.user);
+  const user = useAppSelector((state:RootState) => state.auth.user);
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = () => {

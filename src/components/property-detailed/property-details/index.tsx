@@ -4,6 +4,7 @@ import { useAppSelector } from "@/store/hooks";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { useState, useRef, useLayoutEffect } from "react";
+import { RootState } from "@/store/store";
 
 interface PropertyDetailsCardProps {
   readonly address: string;
@@ -86,7 +87,7 @@ export function PropertyDetailsCard({
   description,
   price,
 }: PropertyDetailsCardProps) {
-  const { isSidebarOpen } = useAppSelector((state) => state?.layout);
+  const { isSidebarOpen } = useAppSelector((state:RootState) => state?.layout);
   const sizes = getSizeClasses(isSidebarOpen);
 
   const [isExpanded, setIsExpanded] = useState(false);

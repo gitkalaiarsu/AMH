@@ -73,6 +73,7 @@ export function PropertyCard({
           className
         )}
       >
+        {/* Image Section */}
         <div className="relative w-full aspect-222/165 overflow-hidden rounded-t-[9.28px] shrink-0">
           <Image
             src={property.imageUrl}
@@ -101,50 +102,51 @@ export function PropertyCard({
           )}
         </div>
 
-        <div className="bg-[#343540] rounded-b-[9.28px] p-3 pt-2.5 flex-1 flex flex-col justify-between">
+        {/* Content Section */}
+        <div className="bg-[#343540] rounded-b-[9.28px] p-3 flex-1 flex flex-col min-h-0">
           <div className="flex flex-col flex-1 min-w-0">
-            <h3 className="text-white text-[15px] leading-[147%] truncate font-satoshi font-bold tracking-[-0.01em]">
+            {/* Address */}
+            <h3 className="text-white font-[700] text-[13.92px] leading-[147%] font-satoshi font-medium tracking-[-0.01em] line-clamp-1 mb-0.5">
               {property.address}
             </h3>
 
-            <p className="text-[10px] text-[#c1c2ce] opacity-60 leading-[147%] mb-1.5 truncate font-satoshi font-medium tracking-[-0.01em]">
+            {/* City/State/Zip */}
+            <p className="text-[10px] text-[#c1c2ce] opacity-60 leading-[147%] mb-1.5 truncate font-satoshi font-[500] tracking-[-0.01em]">
               {property.city}, {property.state} {property.zipCode}
             </p>
 
-            <div className="mb-2 leading-[147%]">
-              <span className="text-[18px] text-white font-satoshi font-bold tracking-normal">
+            {/* Price */}
+            <div className="mb-1.5 leading-[147%]">
+              <span className="text-[17px] font-[700] text-white font-satoshi font-medium tracking-normal">
                 ${property.price.toLocaleString()}
               </span>
-              <span className="text-[16px] font-medium text-[#c1c2ce] font-satoshi tracking-normal">
+              <span className="text-[15px] font-medium text-[#c1c2ce] font-satoshi tracking-normal">
                 /month
               </span>
             </div>
-            <div className="flex flex-nowrap items-center w-full text-[9.27px] font-medium text-[#c1c2ce] tracking-[-0.01em] mb-2.5 leading-[147%] gap-x-3 overflow-hidden">
-              
-              <div className="flex items-center gap-[1.5px] shrink-0">
+
+            {/* Property Details */}
+            <div className="flex items-center w-full text-[9.27px] font-medium text-[#c1c2ce] tracking-[-0.01em] mb-2 leading-[147%] gap-2">
+              <div className="flex items-center gap-0.5 shrink-0">
                 <Image
                   src="/bed.svg"
                   alt="Beds"
-                  width={21}
+                  width={20}
                   height={12}
                   className="block w-[20.65px] h-auto"
                 />
-                <span className="whitespace-nowrap">
-                  {property.beds} Beds
-                </span>
+                <span className="whitespace-nowrap">{property.beds} Beds</span>
               </div>
 
-              <div className="flex items-center gap-1.5 shrink-0">
+              <div className="flex items-center gap-1 shrink-0">
                 <Image
                   src="/bathtubs.svg"
                   alt="Baths"
                   width={11}
-                  height={10}
+                  height={11}
                   className="block w-[10.21px] h-auto"
                 />
-                <span className="whitespace-nowrap">
-                  {property.baths} bath
-                </span>
+                <span className="whitespace-nowrap">{property.baths} bath</span>
               </div>
 
               <div className="flex items-center shrink-0">
@@ -155,21 +157,22 @@ export function PropertyCard({
                   height={12}
                   className="block w-[20.65px] h-auto"
                 />
-                <span className="whitespace-nowrap ml-[-2.5px]">
+                <span className="whitespace-nowrap ml-[-2px]">
                   {property.sqft.toLocaleString()} sqf
                 </span>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center w-full gap-2 mt-auto">
+          {/* Tags Section - Keep on single line */}
+          <div className="flex flex-wrap items-center w-full gap-1 mt-auto">
             {property?.tags?.map((tag) => {
               const { borderColor, textColor, icon } = getTagStyles(tag);
               return (
                 <div
                   key={tag}
                   className={cn(
-                    "inline-flex items-center gap-1 border rounded-full px-1.5 py-0.5 shrink-0 whitespace-nowrap",
+                    "inline-flex items-center gap-0.5 border rounded-full px-1.5 py-0.5 shrink-0 whitespace-nowrap",
                     borderColor
                   )}
                 >

@@ -6,10 +6,11 @@ import * as layoutActions from "@/store/reducers/layoutReducer";
 import { SearchHeader } from "./search-header";
 import { SearchAction } from "./search-action";
 import SearchHistoryGroup from "./search-history";
+import { RootState } from "@/store/store";
 
 export function SearchHistorySidebar() {
   const dispatch = useAppDispatch();
-  const { isSidebarOpen } = useAppSelector((state) => state.layout);
+  const { isSidebarOpen } = useAppSelector((state:RootState) => state.layout);
 
   const todayItems = mockSearchHistory.filter(
     (item) => item.category === "today",

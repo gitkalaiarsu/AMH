@@ -4,9 +4,10 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import * as layoutActions from "@/store/reducers/layoutReducer";
+import { RootState } from "@/store/store";
 
 export function Header() {
-  const { isSidebarOpen } = useAppSelector((state) => state.layout);
+  const { isSidebarOpen } = useAppSelector((state:RootState) => state.layout);
   const dispatch = useAppDispatch();
   const toggleSidebar = () => {
     dispatch(layoutActions.setSidebar(!isSidebarOpen));

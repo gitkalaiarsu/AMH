@@ -84,8 +84,8 @@ export function PropertyCard({
           />
 
           <div className="absolute z-10 flex items-center gap-1 px-2 py-1 bg-white rounded-full top-2 right-2">
-            <Calendar className="h-2.5 w-2.5 text-[#DD1C22]" />
-            <span className="text-[8px] font-medium text-[#DD1C22]">
+            <Calendar className="h-2.5 w-2.5 text-[#0D1116]" />
+            <span className="text-[8px] font-medium text-[#0D1116]">
               {property.daysOnMarket} days
             </span>
           </div>

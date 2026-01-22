@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
-import { useState, useMemo, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { Loader2 } from "lucide-react";
 import { PropertyCard } from "@/components/ui/property-card";
 import { mockProperties } from "@/utils/mock-data";
@@ -9,11 +9,22 @@ import PropertyFilters from "./property-filters";
 import MatchingProperty from "./matching-property";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { RootState } from "@/store/store";
-import * as layoutActions from "@/store/reducers/layoutReducer";
+import * as layoutReducer from "@/store/reducers/layout-reducer";
+import * as propertyReducer from "@/store/reducers/property-reducer";
+import { Property } from "@/types/property";
+import { cn } from "@/lib/utils";
+import { EditFiltersDialog } from "./property-filters/edit-filters-dialog";
 
 const PropertyListing = () => {
-  const { isSidebarOpen } = useAppSelector((state: RootState) => state.layout);
   const dispatch = useAppDispatch();
+  const { properties } = useAppSelector((state: RootState) => state.property);
+  const { isSidebarOpen } = useAppSelector((state: RootState) => state.layout);
+
+  // Infinite scroll state
+  const [displayCount, setDisplayCount] = useState(8);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const loaderRef = useRef<HTMLDivElement>(null);
 
   const [filters, setFilters] = useState({
     location: "Lake Dallas, TX",
@@ -21,14 +32,11 @@ const PropertyListing = () => {
     amenities: ["Pool"],
   });
 
-  const [displayCount, setDisplayCount] = useState(8);
-  const [isLoading, setIsLoading] = useState(false);
-  const loaderRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
-    dispatch(layoutActions.setSidebar(false));
+    dispatch(layoutReducer.setSidebar(false));
   }, []);
 
+  // Extended properties for demonstration (optional - remove if not needed)
   const extendedProperties = useMemo(() => {
     const extended = [];
     for (let i = 0; i < 5; i++) {
@@ -42,15 +50,21 @@ const PropertyListing = () => {
     return extended;
   }, []);
 
-  const totalResults = extendedProperties.length;
-  const displayedProperties = extendedProperties.slice(0, displayCount);
+  useEffect(() => {
+    // Use extendedProperties for demo, or mockProperties for real data
+    dispatch(propertyReducer.setProperties(extendedProperties));
+  }, []);
+
+  const totalResults = properties.length;
+  const displayedProperties = properties.slice(0, displayCount);
   const hasMore = displayCount < totalResults;
 
-  // Load more items
+  // Load more function
   const loadMore = useCallback(() => {
     if (isLoading || !hasMore) return;
     setIsLoading(true);
-    // Simulate loading delay
+
+    // Simulate loading delay (replace with actual API call if needed)
     setTimeout(() => {
       setDisplayCount((prev) => Math.min(prev + 8, totalResults));
       setIsLoading(false);
@@ -104,40 +118,38 @@ const PropertyListing = () => {
     <div className="min-h-screen">
       <div className="container px-4 py-6 mx-auto md:px-6">
         {/* Header */}
-        <PropertyHeader />
+        <PropertyHeader
+          title="Lake Dallas Homes"
+          amenities="Pool"
+          status="Vacant"
+          isBookmarked={false}
+          onBookmarkToggle={() => {}}
+        />
+        {/* <PropertyDashboard /> */}
 
         {/* Filters */}
         <PropertyFilters
           activeFilters={activeFilters}
           removeFilter={removeFilter}
+          setIsDialogOpen={setIsDialogOpen}
         />
 
         {/* Results Header */}
         <MatchingProperty totalResults={totalResults} />
 
         {/* Property Grid */}
-        <div
-          className={`
-              grid pb-8 transition-all duration-300 ease-in-out
-              gap-4 md:gap-5
-              
-              /* Perfect balance for all screens */
-              grid-cols-1
-              sm:grid-cols-2
-              md:grid-cols-3
-              lg:grid-cols-4
-              
-              ${
-                isSidebarOpen
-                  ? "xl:grid-cols-4 2xl:grid-cols-4"
-                  : "xl:grid-cols-5 2xl:grid-cols-6"
-              }
-            `}
-        >
-          {displayedProperties.map((property) => (
-            <PropertyCard key={property.id} property={property} />
-          ))}
-        </div>
+       <div
+  className={cn(
+    "grid gap-4 md:gap-5 pb-8 transition-all duration-300 ease-in-out",
+    "grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))]"
+  )}
+>
+
+  {displayedProperties.map((property: Property) => (
+    <PropertyCard key={property.id} property={property} />
+  ))}
+</div>
+
         {/* Infinite Scroll Loader */}
         {hasMore && (
           <div
@@ -166,6 +178,8 @@ const PropertyListing = () => {
           </div>
         )}
       </div>
+      {/* Edit Filters Dialog */}
+      <EditFiltersDialog open={isDialogOpen} onOpenChange={setIsDialogOpen} />
     </div>
   );
 };

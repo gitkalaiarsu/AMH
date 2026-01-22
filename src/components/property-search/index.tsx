@@ -8,46 +8,34 @@ import WelcomeInformation from "./welcome-info";
 import SearchProperties from "./search-properties";
 import PropertyFeatures from "./property-features";
 import SavedProperty from "./saved-property";
-import * as layoutActions from "@/store/reducers/layoutReducer";
 import { PRIVATE_PATH } from "@/utils/constant";
 import { RootState } from "@/store/store";
+import { featureCards, forWarning } from "@/utils/common-service";
+import * as propertyReducer from "@/store/reducers/property-reducer";
+import { mockSavedProperties } from "@/utils/mock-data";
+import ManualFilter from "./manual-filter";
 
 export default function PropertySearch() {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const user = useAppSelector((state:RootState) => state.auth.user);
+  const {user} = useAppSelector((state: RootState) => state.auth);
+  const{savedProperties} = useAppSelector((state:RootState) => state.property);
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = () => {
-    router.push(PRIVATE_PATH.PROPERTY_LIST);
+    if (!searchQuery.trim()) {
+      forWarning("Search query is empty. Please enter a valid search term.");
+      return;
+    }
+    router.push(
+      `${PRIVATE_PATH.PROPERTY_LIST}?query=${encodeURIComponent(
+        searchQuery.trim()
+      )}`
+    );
   };
 
-  const featureCards = [
-    {
-      iconSrc: "/house.svg",
-      title: "Property ID / Address Example",
-      description:
-        "Search by property ID, full address, or zip code to view detailed listings instantly.",
-      iconBgColor: "rgba(74, 217, 145, 0.21)",
-    },
-    {
-      iconSrc: "/ep_location.svg",
-      title: "City / Zip Example",
-      description:
-        "Find properties in Mesa, Arizona 85209 under $3000 with at least 3 bedrooms.",
-      iconBgColor: "rgba(254, 197, 61, 0.21)",
-    },
-    {
-      iconSrc: "/swimming-pool.svg",
-      title: "Amenities / Nearby Example",
-      description:
-        "List houses near shopping center that include a backyard patio or swimming pool.",
-      iconBgColor: "rgba(130, 128, 255, 0.21)",
-    },
-  ];
-
   useEffect(() => {
-    dispatch(layoutActions.setSidebar(true));
+    dispatch(propertyReducer.setSavedProperties(mockSavedProperties))
   }, []);
 
   return (
@@ -79,22 +67,26 @@ export default function PropertySearch() {
             lg:max-w-180
           "
         >
-          {/* Greeting Text */}
           <WelcomeInformation username={user?.name ?? "there"} />
+          <h1 className="text-3xl md:text-[42px] font-bold capitalize text-center leading-[100%] tracking-[-1.05px] font-satoshi font-[700] text-[color:var(--hero-text-color)] bg-[image:var(--hero-text-bg)] bg-clip-text">
+            Find Properties With AI
+          </h1>
 
-          {/* Search Input & Heading */}
           <SearchProperties
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}
-            handleSearch={handleSearch}
+            onSubmit={handleSearch}
           />
 
-          {/* Feature Cards */}
           <PropertyFeatures featureCards={featureCards} />
         </div>
+        {/* manual Filter */}
+        <ManualFilter />
 
         {/* Saved Properties Section */}
-        <SavedProperty />
+        <SavedProperty 
+          savedProperties={savedProperties}
+        />
       </div>
     </div>
   );

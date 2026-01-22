@@ -1,6 +1,6 @@
 import React from "react";
-import type { SearchHistoryItem } from "@/types/property";
 import SearchHistoryItemComponent from "./search-history-item";
+import { SearchHistoryItem } from "@/types/layout-type";
 
 interface SearchHistoryGroupProps {
   title: string;

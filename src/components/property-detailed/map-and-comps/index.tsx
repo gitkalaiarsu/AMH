@@ -1,95 +1,22 @@
 "use client";
 
-import Image from "next/image";
-import { PieChart } from "../rental-pie-chart";
-import { useAppSelector } from "@/store/hooks";
-import { RootState } from "@/store/store";
-
 export function MapAndCompsCard() {
-  const { isSidebarOpen } = useAppSelector((state: RootState) => state?.layout);
-
-  const pieChartData = [
-    {
-      label: "Purchase costs",
-      value: 75,
-      color: "#1867D2",
-    },
-    {
-      label: "Rehab costs",
-      value: 25,
-      color: "#EEBE00",
-    },
-  ];
 
   return (
     <div className="flex flex-col gap-3 h-auto sm:flex-row lg:flex-col lg:h-124.5">
-      <div className="w-full sm:w-1/2 lg:w-full rounded-[10px] overflow-hidden relative h-45 sm:h-50 lg:h-56.5">
-        <Image src="/maps-image.svg" alt="Map" fill className="object-cover" />
+      <div className="w-full rounded-[10px] overflow-hidden relative h-45 sm:h-50 lg:h-full shadow-[var(--map-card-shadow)]">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26730.41002150702!2d-97.06177568948335!3d33.12744937614569!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c33c90b58e523%3A0xa9ddd2ea50a2790b!2sLake%20Dallas%2C%20TX%2075065%2C%20USA!5e0!3m2!1sen!2sin!4v1767169085582!5m2!1sen!2sin"
+          className="absolute inset-0 object-cover w-full h-full" 
+          allowFullScreen
+          loading="lazy"
+          title="map"
+          referrerPolicy="no-referrer-when-downgrade"
+        ></iframe>
       </div>
 
-      <div className="w-full sm:w-1/2 lg:w-full flex-1 rounded-[10px] p-4 sm:p-5 lg:p-6 flex flex-col justify-center bg-[#2D3748]/60 border border-[#4B5563]/30 min-w-0 overflow-hidden">
-        <h3 className="mb-3 text-sm font-medium text-white sm:mb-4 sm:text-base">
-          Rental/Sales Comps
-        </h3>
-
-        <div
-          className={`flex gap-4 min-w-0 ${
-            isSidebarOpen
-              ? "flex-col items-center"
-              : "flex-col items-center xl:flex-row xl:justify-between"
-          }`}
-        >
-          <div
-            className={`shrink-0 ${
-              isSidebarOpen
-                ? "w-27.5 h-27.5 sm:w-30 sm:h-30"
-                : "w-30 h-30 sm:w-35 sm:h-35 lg:w-37.5 lg:h-37.5 xl:w-40 xl:h-40"
-            }`}
-          >
-            <PieChart data={pieChartData} showPercentages={true} />
-          </div>
-
-          <div
-            className={`flex flex-col gap-3 min-w-0 ${
-              isSidebarOpen ? "w-full" : "w-full xl:flex-1 xl:max-w-45"
-            }`}
-          >
-            <div className="flex items-center gap-2.5 min-w-0">
-              <div
-                className={`shrink-0 rounded-full bg-[#1867D2] ${
-                  isSidebarOpen ? "w-2.5 h-2.5" : "w-3 h-3 sm:w-3.5 sm:h-3.5"
-                }`}
-              />
-              <span
-                className={`text-white/90 whitespace-nowrap ${
-                  isSidebarOpen
-                    ? "text-[10px] sm:text-xs"
-                    : "text-xs sm:text-sm"
-                }`}
-              >
-                Purchase costs
-              </span>
-            </div>
-
-            <div className="flex items-center gap-2.5 min-w-0">
-              <div
-                className={`shrink-0 rounded-full bg-[#EEBE00] ${
-                  isSidebarOpen ? "w-2.5 h-2.5" : "w-3 h-3 sm:w-3.5 sm:h-3.5"
-                }`}
-              />
-              <span
-                className={`font-medium text-white/90 whitespace-nowrap ${
-                  isSidebarOpen
-                    ? "text-[10px] sm:text-xs"
-                    : "text-xs sm:text-sm"
-                }`}
-              >
-                Rehab costs
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Comps Card - Commented out */}
+      {/* ... */}
     </div>
   );
 }

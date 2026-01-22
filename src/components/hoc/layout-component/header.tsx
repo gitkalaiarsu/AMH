@@ -2,19 +2,32 @@
 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import * as layoutActions from "@/store/reducers/layoutReducer";
-import { RootState } from "@/store/store";
+import { useTheme } from "next-themes";
+import { useSyncExternalStore } from "react";
+
+// Helper to safely check if component is mounted (client-side)
+const emptySubscribe = () => () => {};
+const getClientSnapshot = () => true;
+const getServerSnapshot = () => false;
 
 export function Header() {
-  const { isSidebarOpen } = useAppSelector((state:RootState) => state.layout);
-  const dispatch = useAppDispatch();
-  const toggleSidebar = () => {
-    dispatch(layoutActions.setSidebar(!isSidebarOpen));
+  const { resolvedTheme, setTheme } = useTheme();
+  
+  // Use useSyncExternalStore instead of useEffect + useState for mounted check
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    getClientSnapshot,
+    getServerSnapshot
+  );
+
+  const toggleTheme = () => {
+    if (mounted) {
+      setTheme(resolvedTheme === "dark" ? "light" : "dark");
+    }
   };
 
   return (
-    <header className="relative shrink-0 z-50 w-full bg-[#272630]">
+    <header className="relative shrink-0 z-50 w-full bg-(--header-bg) transition-colors duration-300">
       <div className="relative flex h-13.25 items-center justify-between px-2 sm:px-4 md:px-6">
         <button className="z-10 flex items-center cursor-pointer shrink-0">
           <Image
@@ -28,7 +41,7 @@ export function Header() {
         </button>
 
         <div className="absolute items-center justify-center hidden -translate-x-1/2 lg:flex left-1/2">
-          <p className="text-xs font-bold leading-5.5 tracking-[0.5px]  text-[#BEBEC9] uppercase font-satoshi">
+          <p className="text-xs font-bold leading-5.5 tracking-[0.5px] text-(--header-subtitle) uppercase font-satoshi">
             AI Amenities locator
           </p>
         </div>
@@ -63,11 +76,13 @@ export function Header() {
             <Button
               variant="ghost"
               size="icon"
+              onClick={toggleTheme}
               className="relative w-8 h-8 text-white cursor-pointer hover:bg-white/10 sm:w-9 sm:h-9 md:w-10 md:h-10"
+              aria-label="Toggle theme"
             >
               <Image
                 src="/theme.svg"
-                alt="theme color icon"
+                alt="Switch theme"
                 width={19}
                 height={19}
                 className="w-5 h-5"
@@ -102,7 +117,6 @@ export function Header() {
             <Button
               variant="ghost"
               size="icon"
-              onClick={toggleSidebar}
               className="w-8 h-8 text-white cursor-pointer hover:bg-white/10 sm:w-9 sm:h-9 md:w-10 md:h-10"
             >
               <Image

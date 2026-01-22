@@ -4,16 +4,16 @@ import Image from "next/image";
 
 export function NearbyPlacesCard() {
   return (
-    <div className="w-full rounded-[10px] bg-[#FFFFFF] p-2 sm:p-5 md:p-6">
+    <div className="w-full rounded-[10px] bg-(--nearby-bg) shadow-[var(--nearby-shadow)] p-2 sm:p-5 md:p-6 transition-colors duration-300">
       <div className="flex items-center justify-between mb-2 sm:mb-2">
-        <h3 className="font-bold text-[#041523] text-base sm:text-lg leading-none font-satoshi">
+        <h3 className="font-bold text-(--nearby-title) text-base sm:text-lg leading-none font-satoshi">
           Nearby Places
         </h3>
       </div>
 
       <div className="flex flex-col">
         {/* SCHOOL SECTION */}
-        <div className="flex flex-col pt-3 pb-3 border-b border-[#CECECE]">
+        <div className="flex flex-col pt-3 pb-3 border-b border-(--nearby-border)">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
               <div className="flex items-center justify-center w-5 h-5 shrink-0">
@@ -25,7 +25,7 @@ export function NearbyPlacesCard() {
                   className="object-contain"
                 />
               </div>
-              <span className="text-base font-bold text-[#F68708] font-satoshi whitespace-nowrap leading-none">
+              <span className="text-base font-bold text-(--nearby-school) font-satoshi whitespace-nowrap leading-none">
                 School
               </span>
             </div>
@@ -43,6 +43,7 @@ export function NearbyPlacesCard() {
                     width={23}
                     height={23}
                     className="w-5 h-5"
+                    style={{ filter: "var(--nearby-icon-filter)" }}
                   />
                 </button>
               </div>
@@ -57,6 +58,7 @@ export function NearbyPlacesCard() {
                     width={23}
                     height={23}
                     className="w-5 h-5"
+                    style={{ filter: "var(--nearby-icon-filter)" }}
                   />
                 </button>
               </div>
@@ -83,7 +85,7 @@ export function NearbyPlacesCard() {
         </div>
 
         {/* RETAIL SECTION */}
-        <div className="flex flex-col pt-3 pb-3 border-b border-[#CECECE]">
+        <div className="flex flex-col pt-3 pb-3 border-b border-[color:var(--nearby-border)]">
           <div className="flex items-center gap-2 mb-2">
             <div className="flex items-center justify-center w-5 h-5 shrink-0">
               <Image
@@ -94,7 +96,7 @@ export function NearbyPlacesCard() {
                 className="object-contain"
               />
             </div>
-            <span className="text-base font-bold text-[#17AD8F] font-satoshi leading-none">
+            <span className="text-base font-bold text-[color:var(--nearby-retail)] font-satoshi leading-none">
               Retail
             </span>
           </div>
@@ -114,7 +116,7 @@ export function NearbyPlacesCard() {
         </div>
 
         {/* PARKING LOT SECTION */}
-        <div className="flex flex-col pt-3 pb-3 border-b border-[#CECECE]">
+        <div className="flex flex-col pt-3 pb-3 border-b border-[color:var(--nearby-border)]">
           <div className="flex items-center gap-2 mb-2">
             <div className="flex items-center justify-center w-5 h-5 shrink-0">
               <Image
@@ -125,7 +127,7 @@ export function NearbyPlacesCard() {
                 className="object-contain"
               />
             </div>
-            <span className="text-base font-bold text-[#1867D2] font-satoshi leading-none">
+            <span className="text-base font-bold text-[color:var(--nearby-parking)] font-satoshi leading-none">
               Parking Lot
             </span>
           </div>
@@ -151,7 +153,7 @@ export function NearbyPlacesCard() {
                 className="object-contain"
               />
             </div>
-            <span className="text-base font-bold text-[#B445FF] font-satoshi leading-none">
+            <span className="text-base font-bold text-[color:var(--nearby-gym)] font-satoshi leading-none">
               Gym
             </span>
           </div>
@@ -172,16 +174,16 @@ function PlaceRow({
 }: Readonly<{ name: string; time: string; distance: string }>) {
   return (
     <div className="flex items-start justify-between w-full gap-2">
-      <span className="font-medium text-[13px] text-[#68737A] leading-none tracking-[-0.02em] flex-1 min-w-0">
+      <span className="font-medium text-[13px] text-(--nearby-text) leading-none tracking-[-0.02em] flex-1 min-w-0">
         {name}
       </span>
 
       <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-        <span className="font-medium text-[13px] text-[#68737A] leading-none tracking-[-0.02em] text-center w-11.25 sm:w-15">
+        <span className="font-medium text-[13px] text-(--nearby-text) leading-none tracking-[-0.02em] text-center w-11.25 sm:w-15">
           {time}
         </span>
 
-        <span className="font-medium text-[13px] text-[#68737A] leading-none tracking-[-0.02em] text-center w-[45px] sm:w-[50px]">
+        <span className="font-medium text-[13px] text-(--nearby-text) leading-none tracking-[-0.02em] text-center w-[45px] sm:w-[50px]">
           {distance}
         </span>
       </div>

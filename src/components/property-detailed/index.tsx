@@ -11,7 +11,7 @@ import { PropertyFeaturesTab } from "./property-detail-tab";
 import { MapAndCompsCard } from "./map-and-comps";
 import { NearbyPlacesCard } from "./near-places";
 import { useAppDispatch } from "@/store/hooks";
-import * as layoutActions from "@/store/reducers/layoutReducer";
+import * as layoutReducer from "@/store/reducers/layout-reducer";
 
 interface PropertyPageProps {
   params: Promise<{ id: string }>;
@@ -26,7 +26,7 @@ export default function DetailedProperty({
   const property = getPropertyById(id) || mockProperties[0];
 
   useEffect(() => {
-    dispatch(layoutActions.setSidebar(false));
+    dispatch(layoutReducer.setSidebar(false));
   }, []);
 
   return (

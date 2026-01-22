@@ -5,8 +5,6 @@
   /* --- Default Theme Variables --- */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  /* --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono); */
   --font-satoshi: "Satoshi", Inter;
 
   /* --- Sidebar Colors (Existing) --- */
@@ -104,6 +102,182 @@
   --search-bg-inner: #262730;
   --search-bg-hover: #2d2e3a;
   --footer-copy-text-color: #60607b;
+
+   /* background images */
+  --bg-grid-image: url('/gird-light.svg');
+  --bg-star-image: url('/star-light.svg');
+  --bg-grid-opacity: 0.2;
+  /* header */
+  --header-bg: #0E5B90;
+  --header-subtitle: #BEBEC9;
+  /* welcome gradient */
+  --background:#0A0A0A00;
+  --brand-text-start: #1867D2; 
+  --brand-text-end: #03426E;
+  --brand-bg-gradient: linear-gradient(88.57deg, #3599D8 2.67%, #03426E 132.51%);
+ /* text AI gradient */
+  --hero-text-color: transparent;
+  --hero-text-bg: linear-gradient(89.11deg, #03426E 16.97%, #47B9FF 101.21%);
+  /* Search Component Variables (Light Mode) */
+  --search-border-gradient: linear-gradient(to right, #b5d9ef, #1867d2);
+  --search-container-bg: #FFFFFF;
+  --search-text: #020817;
+  --search-placeholder: #697077;
+  --search-btn-bg: #1174BA;
+  --search-border-gradient: linear-gradient(91.92deg, #1174BA 1.62%, #7CC9FF 100.65%);
+  --search-shadow: none;
+  /* --- Feature Card (Light Mode) --- */
+  --feature-card-bg: #FFFFFF;
+  --feature-card-border: #FFFFFF;
+  --feature-card-shadow: 0px 10px 15px 0px #0000001F;
+  --feature-card-title: #000000;
+  --feature-card-desc: #697077;
+  /* Property Card Icons (Light Mode) */
+  --icon-bed: url('/bed-light.svg');
+  --icon-bath: url('/bathtubs-light.svg');
+  --icon-sqft: url('/square-feet-light.svg');
+  --icon-amh-tag: url('/built-amh-light.svg');
+  /* Title: Gradient Blue */
+  --saved-title-bg: linear-gradient(86.93deg, #16649B 2.54%, #B5D9EF 132.76%);
+  --saved-title-color: transparent;
+  --saved-view-all: #000000;
+  /* --- Property Card (Light Mode) --- */
+  --prop-card-bg: #FFFFFF;
+  --prop-card-address: #000000;
+  --prop-card-detail: #697077;
+  --prop-card-price: #000000;
+  --prop-card-sub-price: #697077;
+  --prop-card-shadow: 0px 4px 25px 0px #00000024;
+  --days-left-bg: #FFFFFF;
+  --days-left-text: #000000;
+  /* Sidebar Container */
+  --sidebar-bg: #004F86;
+  --sidebar-border-color: #3176A7;
+  
+  /* Inner Elements (Search Input & History Cards) */
+  --sidebar-element-bg: #3176A7;
+  --sidebar-element-hover: #29648f;
+  /* * Header Title properly */
+  --prop-header-title-bg: linear-gradient(89.27deg, #16649B 0.63%, #B5D9EF 126.78%);
+  --prop-header-title-color: transparent;
+  --prop-header-label: #697077;
+  --prop-header-value: #000000;
+  /* Filter Container */
+  --filters-bg: #ECEFF3;
+  /* Active Filter Card (Chip) */
+  --filters-chip-bg: #8495A1;
+  --filters-chip-text: #FFFFFF;
+  /* "Filters:" Label */
+  --filters-label: #000000;
+  /* Edit Filter */
+  --filters-edit-primary: #1174BA;
+  --filters-edit-bg-hover: rgba(17, 116, 186, 0.1);
+  /* matching property */
+  --matching-prop-bg: #0E5B90;
+  /* property details */
+  --prop-detail-title-bg: linear-gradient(89.46deg, #16649B 0.47%, #B5D9EF 119.5%);
+  --prop-detail-title-color: transparent;
+  /* Description Text */
+  --prop-detail-desc: #697077;
+  /* Export Button */
+  --prop-detail-btn-bg: #1174BA;
+  --prop-detail-btn-hover: #0E5B94;
+  /* Back Icon (Light Mode) */
+  --prop-detail-back-icon: url('/back-icon-light.svg');
+
+  /* Main Card Background */
+  --prop-details-bg: #FFFFFF;
+  /* Main Text (Headers, Description) */
+  --prop-details-text: #000000;
+  /* Rent Price Card Background */
+  --prop-details-price-card-bg: #0E5B90;
+  /* Rent Price Text (Black for contrast against light blue) */
+  --prop-details-price-text: #FFFFFF;
+  /* Fade Gradient for Description (Matches background) */
+  --prop-details-fade-from: #FFFFFF;
+  --prop-details-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.14);
+
+  /* Image gallery */
+  --gallery-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.14);
+
+  /* Map & Comps Card */
+  --map-card-bg: #FFFFFF;
+  --map-card-border: #E2E8F0;
+  --map-card-title: #000000;
+  --map-card-legend: #000000;
+  --map-card-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.14);
+
+  /* tabs */
+  /* Main Container */
+  --features-bg: #FFFFFF;
+  --features-header-bg: #FFFFFF;
+  --features-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.14);
+  
+  /* Text Colors */
+  --features-text-primary: #000000;
+  --features-text-secondary: rgba(0, 0, 0, 0.7); /* For "Coming soon" text */
+  
+  /* Tab Triggers */
+  --tab-text-active: #000000;
+  --tab-border-active: #1174BA;
+  --tab-text-inactive: rgba(0, 0, 0, 0.5);
+  --tab-border-inactive: rgba(0, 0, 0, 0.3);
+  
+  /* Accents (Bullets & Underlines) */
+  --features-accent: #1174BA;
+  
+  /* Dynamic Icons */
+  --icon-house-future: url('/house-future-light.svg');
+  --icon-interior: url('/interior-light.svg');
+
+  /* near places */
+  --nearby-bg: #FFFFFF;
+  --nearby-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.14);
+  --nearby-border: #CECECE;
+  
+  /* Text Colors */
+  --nearby-title: #041523;
+  --nearby-text: #68737A;
+  
+  /* Category Colors */
+  --nearby-school: #F68708;
+  --nearby-retail: #17AD8F;
+  --nearby-parking: #1867D2;
+  --nearby-gym: #B445FF;
+  
+  /* Icon Filter (Keep original for light mode) */
+  --nearby-icon-filter: none;
+
+  /* Footer */
+  --footer-bg: #0A0A0A00; 
+    
+    --footer-border: rgba(0, 0, 0, 0.1);
+    --footer-text-primary: #0A0A0A;
+    --footer-text-secondary: #666666;
+    --footer-copy-text-color: #666666;
+
+    /* manual Filter */
+   --input-bg: #FFFFFF;
+    --input-fg: #000000;
+    --input-placeholder: #697077;
+    --input-border: #E2E8F0;
+    --arrow-bg: #1174BA;      /* Light mode arrow blue */
+    --icon-color: #000000;
+    
+    /* Text Gradient Settings (Light Mode) */
+    --text-gradient-bg: linear-gradient(86.93deg, #16649B 2.54%, #B5D9EF 132.76%);
+    --text-gradient-fill: transparent;
+
+    /* Edit filter model */
+    --dialog-background: #FFFFFF;
+    --dialog-text: #1867D2; 
+    --dialog-icon: #1867D2;
+
+    /* --- Scrollbar (Light Mode) --- */
+    --scrollbar-track: #F1F5F9;      
+    --scrollbar-thumb: #CBD5E1;     
+    --scrollbar-thumb-hover: #94A3B8;
+  
 }
 
 .dark {
@@ -138,6 +312,179 @@
   --sidebar-accent-foreground: #f0f6fc;
   --sidebar-border: #30363d;
   --sidebar-ring: #3b82f6;
+   /* welcome gradient */
+  --brand-text-start: #B5D9EF; 
+  --brand-text-end: #1867D2;  
+  --brand-bg-gradient: linear-gradient(88.57deg, #03426E 2.67%, #3599D8 132.51%);
+  /* text AI gradient */
+  --hero-text-color: #FFFFFF;
+  --hero-text-bg: none;
+  /* Search Component Variables (Dark Mode) */
+  --search-border-gradient: linear-gradient(to right, #1867D2, #004779);
+  --search-container-bg: #262730;
+  --search-text: rgba(255, 255, 255, 0.5);
+  --search-placeholder: rgba(255, 255, 255, 0.5);
+  --search-btn-bg: #1867D2;
+  --search-border-gradient: linear-gradient(to right, #1867D2, #004779);
+  --search-shadow: 0px 0px 4.2px 0px rgba(0,0,0,0.25);
+  /* Background Images (Dark Mode) */
+  --bg-grid-image: url('/gird.svg');
+  --bg-star-image: url('/star.svg');
+  --bg-grid-opacity: 0.1;
+  /* header */
+  --header-bg: #272630;
+  --header-subtitle: #BEBEC9;
+  /* --- Feature Card (Dark Mode) --- */
+ --feature-card-bg: #13161C;
+  --feature-card-border: #484D53;
+  --feature-card-shadow: none;
+  --feature-card-title: #FFFFFF;
+  --feature-card-desc: #FFFFFF;
+  /* Property Card Icons (Dark Mode) */
+  --icon-bed: url('/bed.svg');
+  --icon-bath: url('/bathtubs.svg');
+  --icon-sqft: url('/square-feet.svg');
+  --icon-amh-tag: url('/built-amh.svg');
+  /* Title: Solid White */
+  --saved-title-bg: none;
+  --saved-title-color: #FFFFFF;
+  --saved-view-all: var(--primary);
+  /* --- Property Card (Dark Mode) --- */
+   --prop-card-bg: #343540;
+  --prop-card-address: #FFFFFF;
+  --prop-card-detail: #c1c2ce;
+  --prop-card-price: #FFFFFF;
+  --prop-card-sub-price: #c1c2ce;
+  --prop-card-shadow: none;
+  --days-left-bg: #343540;
+  --days-left-text: #FFFFFF;
+  /* Sidebar Container */
+  --sidebar-bg: #13161C;
+  --sidebar-border-color: #484d53; /* Your existing dark border */
+  
+  /* Inner Elements */
+  --sidebar-element-bg: #262730;   /* Your existing dark card bg */
+  --sidebar-element-hover: #2d2e3a;
+  /* * Header Title properly */
+  --prop-header-title-bg: none;
+  --prop-header-title-color: #FFFFFF;
+  --prop-header-label: #747686;
+  --prop-header-value: #FFFFFF;
+  /* Filter Container */
+  --filters-bg: #343540;
+  /* Active Filter Card (Chip) */
+  --filters-chip-bg: #4A4B55;
+  --filters-chip-text: #FFFFFF;
+  /* "Filters:" Label */
+  --filters-label: #CCCFEE;
+  /* Edit Filter */
+  --filters-edit-primary: #1867D2;
+  --filters-edit-bg-hover: rgba(24, 103, 210, 0.1);
+  /* matching property */
+  --matching-prop-bg: #427EFF;
+    /* property details */
+  --prop-detail-title-bg: none;
+  --prop-detail-title-color: #FFFFFF;
+  /* Description Text */
+  --prop-detail-desc: #747686;
+  /* Export Button */
+  --prop-detail-btn-bg: #2F6FED;
+  --prop-detail-btn-hover: #265BC7;
+  /* Back Icon (Dark Mode) */
+  --prop-detail-back-icon: url('/back-icon.svg');
+
+  /* Main Card Background (#343540 with 60% opacity) */
+  --prop-details-bg: rgba(52, 53, 64, 0.6);
+  /* Main Text */
+  --prop-details-text: #FFFFFF;
+  /* Rent Price Card Background */
+  --prop-details-price-card-bg: #171B21;
+  /* Rent Price Text */
+  --prop-details-price-text: #FFFFFF;
+  /* Fade Gradient for Description */
+  --prop-details-fade-from: #2f303a;
+  --prop-details-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.14);
+  
+  /* Image gallery */
+  --gallery-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.14);
+  
+  /* Map & Comps Card (Matches original #2D3748/60) */
+  --map-card-bg: rgba(45, 55, 72, 0.6);
+  --map-card-border: rgba(75, 85, 99, 0.3);
+  --map-card-title: #FFFFFF;
+  --map-card-legend: rgba(255, 255, 255, 0.9);
+  --map-card-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.14);
+
+  /* Tabs */
+  --features-bg: #23262F;
+  --features-header-bg: #1D2028;
+  --features-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.14);
+  
+  /* Text Colors */
+  --features-text-primary: #FFFFFF;
+  --features-text-secondary: rgba(255, 255, 255, 0.7);
+  
+  /* Tab Triggers */
+  --tab-text-active: #FFFFFF;
+  --tab-border-active: #1867D2;
+  --tab-text-inactive: rgba(255, 255, 255, 0.6);
+  --tab-border-inactive: rgba(255, 255, 255, 0.3);
+  
+  /* Accents */
+  --features-accent: #1867D2;
+  
+  /* Dynamic Icons */
+  --icon-house-future: url('/house-future.svg');
+  --icon-interior: url('/interior.svg');
+
+  /* near places */
+  --nearby-bg: #23262F;
+  --nearby-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.14);
+  --nearby-border: rgba(255, 255, 255, 0.1);
+  
+  /* Text Colors */
+  --nearby-title: #FFFFFF;
+  --nearby-text: #9CA3AF;
+  
+  /* Category Colors (Brightened slightly for dark mode contrast) */
+  --nearby-school: #FFA94D;
+  --nearby-retail: #20C9A6;
+  --nearby-parking: #4B91F1;
+  --nearby-gym: #C770FF;
+  
+  /* Icon Filter (Invert black icons to white for dark mode) */
+  --nearby-icon-filter: brightness(0) invert(1);
+
+  /* footer */
+  --footer-bg: #000000;
+    --footer-border: rgba(255, 255, 255, 0.15);
+    --footer-text-primary: #ffffff;
+    --footer-text-secondary: #9ca3af; /* gray-400 */
+    --footer-copy-text-color: #9ca3af;
+  /* manual Filter */
+ /* --- Dark Theme Variables --- */
+    --input-bg: #262730;
+    --input-fg: #FFFFFF;
+    --input-placeholder: rgba(255, 255, 255, 0.5);
+    --input-border: #3a3b45;
+    
+    /* Requested Dark Theme Updates */
+    --arrow-bg: #4A4B55;      /* Dark gray arrow background */
+    --icon-color: #FFFFFF;
+
+    /* Solid White Text for Labels (Dark Mode) */
+    --text-gradient-bg: none;
+    --text-gradient-fill: #FFFFFF;
+
+    /* Edit filter model */
+   --dialog-background: #13161C;
+   --dialog-text: #FFFFFF; 
+   --dialog-icon: #FFFFFF;
+    
+    /* --- Scrollbar (Dark Mode) --- */
+    --scrollbar-track: #0d1117;
+    --scrollbar-thumb: #30363d;
+    --scrollbar-thumb-hover: #484f58;
 }
 
 @layer base {
@@ -195,22 +542,23 @@
 }
 
 /* Custom scrollbar for dark theme */
+/* Custom dynamic scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0d1117;
+  background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #30363d;
+  background: var(--scrollbar-thumb);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #484f58;
+  background: var(--scrollbar-thumb-hover);
 }
 
 /* Loader Arc Colors & Glow */
@@ -223,4 +571,34 @@
 /* Faint Background Ring Color */
 .loader-arc-bg {
   border-color: rgba(24, 103, 210, 0.15);
+}
+
+@layer utilities {
+  /* This class handles both the Light Mode Gradient 
+     and the Dark Mode Solid White text automatically 
+     using the variables above.
+  */
+  .text-brand-gradient {
+    background: var(--text-gradient-bg);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: var(--text-gradient-fill);
+    background-clip: text;
+    color: var(--text-gradient-fill); /* Fallback for solid colors */
+  }
+
+  /* Focus Border Gradient Logic */
+  .focus-gradient-border {
+    border: 1.05px solid transparent;
+  }
+
+  .focus-gradient-border:focus,
+  .focus-gradient-border:focus-visible,
+  .focus-gradient-border[data-state="open"] {
+    border-color: transparent;
+    background-image: linear-gradient(var(--input-bg), var(--input-bg)), 
+                      linear-gradient(91.92deg, #1174BA 1.62%, #7CC9FF 100.65%);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    outline: none;
+  }
 }

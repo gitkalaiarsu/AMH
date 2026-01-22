@@ -1,7 +1,7 @@
-import { redirect } from "next/navigation";
+import PropertySearch from "@/components/property-search";
 
-const Home = () => {
-  redirect("/property-search");
+const PropertySearchPage = () => {
+  return <PropertySearch />;
 };
 
-export default Home;
+export default PropertySearchPage;

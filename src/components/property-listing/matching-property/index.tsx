@@ -6,9 +6,9 @@ const MatchingProperty = ({
   totalResults,
 }: Readonly<MatchingPropertyProps>) => {
   return (
-    <div className="w-full bg-[#427EFF] rounded-[10px] min-h-13.25 px-4 md:px-6 mb-6 flex items-center justify-between">
+    <div className="w-full bg-(--matching-prop-bg) rounded-[10px] min-h-13.25 px-4 md:px-6 mb-6 flex items-center justify-between">
       <div className="flex flex-col justify-center h-full py-1">
-        <h2 className="text-[18px] md:text-[20px] text-white capitalize leading-none font-satoshi">
+        <h2 className="text-[18px] font-semibold md:text-[20px] text-white capitalize leading-none font-satoshi">
           Matching properties
         </h2>
         <div className="flex items-center gap-1 mt-1 text-white text-[10px] md:text-xs font-medium font-satoshi">

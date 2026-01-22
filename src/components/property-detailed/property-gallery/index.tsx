@@ -25,7 +25,6 @@ export function PropertyImageGallery({
   const [canScrollRight, setCanScrollRight] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  // Check scroll position and update button visibility
   const checkScrollPosition = () => {
     if (scrollContainerRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } =
@@ -35,7 +34,6 @@ export function PropertyImageGallery({
     }
   };
 
-  // Initialize scroll check on mount and when images change
   useEffect(() => {
     checkScrollPosition();
     const container = scrollContainerRef.current;
@@ -74,14 +72,11 @@ export function PropertyImageGallery({
         className,
       )}
     >
-      {/* Main Image Container */}
       <div
         className={cn(
-          "relative w-full overflow-hidden rounded-[10px] border border-border/50 shadow-sm group",
+          "relative w-full overflow-hidden rounded-[10px] border border-border/50 group shadow-[var(--gallery-shadow)]",
           "aspect-521/398",
-          // Responsive height adjustments
           "h-62.5 sm:h-75 md:h-87.5 lg:h-99.5",
-          // Max width constraints based on sidebar
           isSidebarOpen
             ? "max-w-full xl:max-w-120"
             : "max-w-full lg:max-w-140.5",
@@ -95,40 +90,37 @@ export function PropertyImageGallery({
           priority
         />
 
-        {/* Previous button */}
         <button
           onClick={(e) => {
             e.stopPropagation();
             handlePrevious();
           }}
           className="absolute left-0 top-1/2 -translate-y-1/2 z-10 
-                     flex items-center justify-center 
-                     bg-black/50 hover:bg-black/70 text-white 
-                     transition-colors rounded-r-sm
-                     w-6.5 h-5.5"
+                      flex items-center justify-center 
+                      bg-black/50 hover:bg-black/70 text-white 
+                      transition-colors rounded-r-sm
+                      w-6.5 h-5.5"
           aria-label="Previous image"
         >
           <ChevronLeft className="w-4 h-4" />
         </button>
 
-        {/* Next button */}
         <button
           onClick={(e) => {
             e.stopPropagation();
             handleNext();
           }}
           className="absolute right-0 top-1/2 -translate-y-1/2 z-10 
-                     flex items-center justify-center 
-                     bg-black/50 hover:bg-black/70 text-white 
-                     transition-colors rounded-l-sm
-                     w-6.5 h-5.5"
+                      flex items-center justify-center 
+                      bg-black/50 hover:bg-black/70 text-white 
+                      transition-colors rounded-l-sm
+                      w-6.5 h-5.5"
           aria-label="Next image"
         >
           <ChevronRight className="w-4 h-4" />
         </button>
       </div>
 
-      {/* Thumbnail Scroll Section */}
       <div
         className={cn(
           "relative group/thumbs w-full",
@@ -138,22 +130,20 @@ export function PropertyImageGallery({
             : "max-w-full lg:max-w-140.5",
         )}
       >
-        {/* Left scroll button */}
         {canScrollLeft && (
           <button
             onClick={scrollThumbnailsLeft}
             className="absolute left-0 top-1/2 -translate-y-1/2 z-20 
-                       flex items-center justify-center 
-                       bg-black/50 hover:bg-black/70 text-white 
-                       rounded-r-sm backdrop-blur-[1px]
-                       w-6.5 h-5.5"
+                        flex items-center justify-center 
+                        bg-black/50 hover:bg-black/70 text-white 
+                        rounded-r-sm backdrop-blur-[1px]
+                        w-6.5 h-5.5"
             aria-label="Scroll thumbnails left"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
         )}
 
-        {/* Thumbnail container */}
         <div
           ref={scrollContainerRef}
           onScroll={checkScrollPosition}
@@ -161,11 +151,10 @@ export function PropertyImageGallery({
             "h-full w-full flex gap-2 sm:gap-2.5 overflow-x-auto",
             "scrollbar-hide",
             "[&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]",
+            // Updated: Padding logic is now handled via Tailwind arbitrary values
+            canScrollLeft ? "pl-[30px]" : "pl-0",
+            canScrollRight ? "pr-[30px]" : "pr-0"
           )}
-          style={{
-            paddingLeft: canScrollLeft ? "30px" : "0",
-            paddingRight: canScrollRight ? "30px" : "0",
-          }}
         >
           {images.map((image, index) => (
             <button
@@ -173,8 +162,8 @@ export function PropertyImageGallery({
               onClick={() => setSelectedImage(index)}
               className={cn(
                 "relative shrink-0 overflow-hidden rounded-[10px] transition-all duration-300",
-                // Responsive thumbnail sizes
                 "w-22.5 h-13.75 sm:w-25 sm:h-16.25 md:w-27.5 md:h-18 lg:w-30.5 lg:h-20",
+                // Updated: Removed grayscale classes entirely
                 selectedImage === index
                   ? "border border-white opacity-100 ring-2 ring-primary/20"
                   : "border-transparent opacity-60 hover:opacity-100",
@@ -193,15 +182,14 @@ export function PropertyImageGallery({
           ))}
         </div>
 
-        {/* Right scroll button */}
         {canScrollRight && (
           <button
             onClick={scrollThumbnailsRight}
             className="absolute right-0 top-1/2 -translate-y-1/2 z-20 
-                       flex items-center justify-center 
-                       bg-black/50 hover:bg-black/70 text-white 
-                       rounded-l-sm backdrop-blur-[1px]
-                       w-6.5 h-5.5"
+                        flex items-center justify-center 
+                        bg-black/50 hover:bg-black/70 text-white 
+                        rounded-l-sm backdrop-blur-[1px]
+                        w-6.5 h-5.5"
             aria-label="Scroll thumbnails right"
           >
             <ChevronRight className="w-4 h-4" />

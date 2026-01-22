@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import authReducer from "./reducers/authReducer";
-import layoutReducer from "./reducers/layoutReducer";
-import propertyReducer from "./reducers/propertyReducer";
-import searchReducer from "./reducers/searchReducer";
+import authReducer from "./reducers/auth-reducer";
+import layoutReducer from "./reducers/layout-reducer";
+import propertyReducer from "./reducers/property-reducer";
+import searchReducer from "./reducers/search-reducer";
 
 export const store = configureStore({
   reducer: {

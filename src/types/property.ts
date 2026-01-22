@@ -82,16 +82,9 @@ export interface PropertyFilters {
   maxSqft?: number;
 }
 
-export interface SearchHistoryItem {
-  id: string;
-  query: string;
-  matches: number;
-  filters: string;
-  timestamp: Date;
-  category: "today" | "yesterday" | "older";
-}
 
-export interface SavedProperty {
+
+export interface SavedPropertyType {
   id: string;
   property: Property;
   savedAt: Date;

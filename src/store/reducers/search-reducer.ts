@@ -1,10 +1,10 @@
+import { SearchHistoryItem } from "@/types/layout-type";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { SearchHistoryItem } from "@/types/property";
 
 interface SearchState {
   query: string;
   searchHistory: SearchHistoryItem[];
-  isSearching: boolean;
+  isSearching: boolean; 
   recentSearches: string[];
 }
 

@@ -87,7 +87,7 @@ export function PropertyDetailsCard({
   description,
   price,
 }: PropertyDetailsCardProps) {
-  const { isSidebarOpen } = useAppSelector((state:RootState) => state?.layout);
+  const { isSidebarOpen } = useAppSelector((state: RootState) => state?.layout);
   const sizes = getSizeClasses(isSidebarOpen);
 
   const [isExpanded, setIsExpanded] = useState(false);
@@ -112,21 +112,21 @@ export function PropertyDetailsCard({
     <div
       className={cn(
         "w-full rounded-[10px] flex flex-col overflow-hidden transition-all duration-300",
-        "h-auto lg:h-124.5 bg-[#343540]/60",
-        isSidebarOpen && "xl:h-124.5",
+        "h-auto lg:h-124.5 bg-(--prop-details-bg) shadow-[var(--prop-details-shadow)]",
+        isSidebarOpen && "xl:h-124.5"
       )}
     >
       <div
         className={cn(
           "flex flex-col h-full transition-all duration-300",
-          sizes.container,
+          sizes.container
         )}
       >
         <div className={sizes.headerMargin}>
           <h2
             className={cn(
-              "text-white font-bold transition-all leading-tight font-satoshi",
-              sizes.title,
+              "text-(--prop-details-text) font-bold transition-all leading-tight font-satoshi",
+              sizes.title
             )}
           >
             {address}
@@ -137,7 +137,7 @@ export function PropertyDetailsCard({
           <div
             className={cn(
               "flex items-center mt-3 transition-all duration-300",
-              sizes.specsGap,
+              sizes.specsGap
             )}
           >
             <SpecItem
@@ -173,8 +173,8 @@ export function PropertyDetailsCard({
         <div className="flex flex-col flex-1 min-h-0 mb-3">
           <h3
             className={cn(
-              "font-bold text-white mb-2 shrink-0",
-              sizes.summaryTitle,
+              "font-bold text-(--prop-details-text) mb-2 shrink-0",
+              sizes.summaryTitle
             )}
           >
             Property summary
@@ -184,18 +184,18 @@ export function PropertyDetailsCard({
             <p
               ref={textRef}
               className={cn(
-                "text-white font-normal tracking-[-0.03em] transition-all duration-300",
+                "text-(--prop-details-text) font-normal tracking-[-0.03em] transition-all duration-300",
                 sizes.descriptionText,
                 isExpanded
                   ? "overflow-y-auto h-full pr-1"
-                  : "line-clamp-4 lg:line-clamp-none lg:overflow-hidden lg:h-full",
+                  : "line-clamp-4 lg:line-clamp-none lg:overflow-hidden lg:h-full"
               )}
             >
               {description}
             </p>
 
             {!isExpanded && isOverflowing && (
-              <div className="absolute bottom-0 left-0 w-full h-8 bg-gradient-to-t from-[#2f303a] via-[#2f303a]/80 to-transparent pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-full h-8 bg-linear-to-t from-[var(--prop-details-fade-from)] via-[var(--prop-details-fade-from)]/80 to-transparent pointer-events-none" />
             )}
           </div>
 
@@ -204,7 +204,7 @@ export function PropertyDetailsCard({
               onClick={() => setIsExpanded(!isExpanded)}
               className={cn(
                 "text-[#5EA9FF] hover:text-[#4A9AEE] hover:underline font-medium mt-1 text-left w-fit shrink-0 transition-colors cursor-pointer",
-                isSidebarOpen ? "text-[10px]" : "text-[11px]",
+                isSidebarOpen ? "text-[10px]" : "text-[11px]"
               )}
             >
               {isExpanded ? "Show less" : "Show more"}
@@ -214,26 +214,31 @@ export function PropertyDetailsCard({
 
         <div
           className={cn(
-            "bg-[#171B21] rounded-[10px] mt-auto shrink-0",
-            sizes.priceCard,
+            "bg-(--prop-details-price-card-bg) rounded-[10px] mt-auto shrink-0",
+            sizes.priceCard
           )}
         >
-          <p className={cn("font-bold text-white mb-1", sizes.priceLabel)}>
+          <p
+            className={cn(
+              "font-bold text-(--prop-details-price-text) mb-1",
+              sizes.priceLabel
+            )}
+          >
             Current Rent Price
           </p>
           <div className="flex items-baseline gap-1">
             <span
               className={cn(
-                "font-bold text-white leading-[100%] transition-all",
-                sizes.priceAmount,
+                "font-bold text-(--prop-details-price-text) leading-[100%] transition-all",
+                sizes.priceAmount
               )}
             >
               ${price.toLocaleString()}
             </span>
             <span
               className={cn(
-                "font-medium text-[#9E9E9E] leading-[100%] transition-all",
-                sizes.priceUnit,
+                "font-medium text-[#FFFFFF] leading-[100%] transition-all",
+                sizes.priceUnit
               )}
             >
               /month

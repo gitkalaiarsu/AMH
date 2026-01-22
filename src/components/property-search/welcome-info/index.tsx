@@ -8,7 +8,17 @@ const WelcomeInformation = ({
 }: Readonly<WelcomeInformationProps>) => {
   return (
     <div className="flex items-center justify-center w-full gap-1 mx-auto md:w-auto">
-      <span className="text-xl md:text-[25.2px] leading-[100%] font-medium capitalize text-center bg-linear-to-r from-[#B5D9EF] to-[#1867D2] bg-clip-text text-transparent font-weight-500 font-satoshi">
+      <span
+        className="
+            text-xl md:text-[25.2px] leading-[100%] font-medium capitalize text-center 
+            font-satoshi font-[500]
+            text-transparent bg-clip-text 
+            
+            bg-gradient-to-r 
+            from-[var(--brand-text-start)] 
+            to-[var(--brand-text-end)]
+          "
+      >
         Hey {username}, I&apos;m Property Pulse
       </span>
       <Image

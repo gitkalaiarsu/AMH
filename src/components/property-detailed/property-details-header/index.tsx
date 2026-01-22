@@ -26,26 +26,21 @@ const PropertyDetailedHeader = ({
           className="mt-1 md:mt-1.25 p-0.5 cursor-pointer shrink-0"
           aria-label="Go back"
         >
-          <Image
-            src="/back-icon.svg"
-            alt="back"
-            width={14}
-            height={14}
-            className="w-3.5 h-3.5 md:w-auto md:h-3.5"
+          <div
+            className="w-3.5 h-3.5 md:w-3.5 md:h-3.5 bg-(image:--prop-detail-back-icon) bg-contain bg-no-repeat bg-center"
           />
         </button>
 
         <div className="flex flex-col flex-1 min-w-0">
-          <h1 className="text-lg leading-tight truncate sm:text-xl lg:text-2xl text-foreground font-satoshi">
+          <h1 className="text-lg leading-tight truncate sm:text-xl lg:text-2xl font-satoshi bg-(image:--prop-detail-title-bg) text-(--prop-detail-title-color) bg-clip-text">
             Property ID {propertyId}
           </h1>
-          <p className="text-sm truncate text-[#747686] font-medium mt-1 leading-none font-satoshi">
+          <p className="text-sm truncate text-(--prop-detail-desc) font-medium mt-1 leading-none font-satoshi">
             {address}, {city}, {state} {zipCode}
           </p>
         </div>
       </div>
-      <Button className="bg-[#2F6FED] hover:bg-[#265BC7] text-white shrink-0 flex items-center gap-2 rounded-lg px-4 py-3 h-10 shadow-sm transition-colors cursor-pointer">
-        {" "}
+      <Button className="bg-(--prop-detail-btn-bg) hover:bg-(--prop-detail-btn-hover) text-white shrink-0 flex items-center gap-2 rounded-lg px-4 py-3 h-10 shadow-sm transition-colors cursor-pointer border-none">
         <Image
           src="/export-icon.svg"
           alt="export"

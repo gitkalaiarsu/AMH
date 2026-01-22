@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type {
   Property,
-  SavedProperty,
   PropertyFilters,
+  SavedPropertyType,
 } from "@/types/property";
 
 interface PropertyState {
   properties: Property[];
-  savedProperties: SavedProperty[];
+  savedProperties: SavedPropertyType[];
   selectedProperty: Property | null;
   filters: PropertyFilters;
   loading: boolean;
@@ -36,10 +36,10 @@ const propertySlice = createSlice({
     setProperties: (state, action: PayloadAction<Property[]>) => {
       state.properties = action.payload;
     },
-    setSavedProperties: (state, action: PayloadAction<SavedProperty[]>) => {
+    setSavedProperties: (state, action: PayloadAction<SavedPropertyType[]>) => {
       state.savedProperties = action.payload;
     },
-    addSavedProperty: (state, action: PayloadAction<SavedProperty>) => {
+    addSavedProperty: (state, action: PayloadAction<SavedPropertyType>) => {
       state.savedProperties.push(action.payload);
     },
     removeSavedProperty: (state, action: PayloadAction<string>) => {

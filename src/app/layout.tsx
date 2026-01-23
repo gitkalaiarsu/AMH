@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import NextTopLoader from "nextjs-toploader";
@@ -7,14 +7,11 @@ import "./globals.css";
 import Layout from "@/components/hoc/main-layout";
 import { ThemeProvider } from "@/components/theme-provider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"], // Add weights you need
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -30,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-background`}
+        className={`${inter.variable} font-sans antialiased min-h-screen bg-background`}
         suppressHydrationWarning
       >
         <NextTopLoader />

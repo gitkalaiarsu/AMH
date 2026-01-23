@@ -16,7 +16,7 @@ const SavedProperty = ({ savedProperties }: Readonly<SavedPropertyProps>) => {
   };
 
   return (
-    <div className="mb-8 w-full max-w-238.5 mx-auto">
+    <div className="mb-8 w-full max-w-268.5 mx-auto">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
           <Image

@@ -12,7 +12,6 @@ import { RootState } from "@/store/store";
 import * as layoutReducer from "@/store/reducers/layout-reducer";
 import * as propertyReducer from "@/store/reducers/property-reducer";
 import { Property } from "@/types/property";
-import { cn } from "@/lib/utils";
 import { EditFiltersDialog } from "./property-filters/edit-filters-dialog";
 
 const PropertyListing = () => {
@@ -138,17 +137,28 @@ const PropertyListing = () => {
         <MatchingProperty totalResults={totalResults} />
 
         {/* Property Grid */}
-       <div
-  className={cn(
-    "grid gap-4 md:gap-5 pb-8 transition-all duration-300 ease-in-out",
-    "grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))]"
-  )}
->
-
-  {displayedProperties.map((property: Property) => (
-    <PropertyCard key={property.id} property={property} />
-  ))}
-</div>
+        <div
+          className={`
+              grid pb-8 transition-all duration-300 ease-in-out
+              gap-4 md:gap-5
+              
+              /* Perfect balance for all screens */
+              grid-cols-1
+              sm:grid-cols-2
+              md:grid-cols-3
+              lg:grid-cols-4
+              
+              ${
+                isSidebarOpen
+                  ? "xl:grid-cols-4 2xl:grid-cols-4"
+                  : "xl:grid-cols-5 2xl:grid-cols-6"
+              }
+            `}
+        >
+          {displayedProperties.map((property: Property) => (
+            <PropertyCard key={property.id} property={property} />
+          ))}
+        </div>
 
         {/* Infinite Scroll Loader */}
         {hasMore && (

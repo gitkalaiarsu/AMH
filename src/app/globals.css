@@ -5,7 +5,7 @@
   /* --- Default Theme Variables --- */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-satoshi: "Satoshi", Inter;
+  --font-satoshi: Inter, sans-serif;
 
   /* --- Sidebar Colors (Existing) --- */
   --color-sidebar-ring: var(--sidebar-ring);
@@ -62,8 +62,13 @@
   --radius-4xl: calc(var(--radius) + 16px);
 }
 
+body {
+  font-family: var(--font-inter), sans-serif;
+}
+
 /* Property Pulse Dark Theme - Matching the design */
 :root {
+  --font-inter: var(--font-inter);
   --radius: 0.625rem;
   /* Light mode (fallback, but app uses dark) */
   --background: #0d1116;

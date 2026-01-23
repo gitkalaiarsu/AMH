@@ -46,7 +46,7 @@ export default function PropertySearch() {
           sm:px-5 sm:py-8
           md:px-6 md:py-10
           lg:px-8 lg:py-25
-          xl:max-w-238.5
+          xl:max-w-268.5
           relative
         "
       >

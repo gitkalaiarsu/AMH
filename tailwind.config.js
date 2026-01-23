@@ -6,6 +6,9 @@ module.exports = {
       animation: {
         "spin-slow": "spin 0.8s linear infinite",
       },
+      fontFamily: {
+        sans: ['var(--font-inter)', 'sans-serif'],
+      },
     },
   },
   plugins: [],
